@@ -2,6 +2,7 @@ package sortedmap
 
 import (
 	"encoding/json"
+	"fmt"
 	"reflect"
 	"testing"
 )
@@ -55,7 +56,6 @@ func TestMapOfMaps(t *testing.T) {
 	}
 
 	s1 := AsSortedMap(m1)
-	s1.Sort()
 
 	m2 := map[string]interface{}{
 		"Z": s1,
@@ -63,11 +63,24 @@ func TestMapOfMaps(t *testing.T) {
 	}
 
 	s2 := AsSortedMap(m2)
-	s2.Sort()
 
 	b, err := json.MarshalIndent(s2, "", "  ")
 	t.Log(string(b))
 	if err != nil {
 		t.Fail()
 	}
+}
+
+func ExampleAsSortedMap() {
+	unsorted := map[string]interface{}{
+		"b": 2.0,
+		"a": 1,
+		"c": true,
+		"e": nil,
+		"d": "four",
+	}
+
+	fmt.Println(AsSortedMap(unsorted))
+	// Output:
+        // ["a": 1 "b": 2 "c": true "d": four "e": <nil>]
 }
