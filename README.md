@@ -14,15 +14,15 @@ The most common use cases is to print the content of a map sorted by key:
 		"d": "four",
 	}
 
-	fmt.Println(sortedmap.AsSortedMap(unsorted))
+	fmt.Println(sortedmap.AsSortedMap(unsorted))	
 
-        // or
+	// or
 
-        for _, ele := range sortedmap.AsSortedMap(unsorted) {
-            fmt.Println(ele)    // implements Stringer
-
-            fmt.Println(ele.Key() + ":" + ele.Value())
-        }
+	for _, ele := range sortedmap.AsSortedMap(unsorted) {
+		fmt.Println(ele)    // implements Stringer
+		
+		fmt.Println(ele.Key() + ":" + ele.Value())
+	}
 
 You can also generate a JSON object with sorted keys:
 
