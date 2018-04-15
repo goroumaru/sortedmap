@@ -103,6 +103,7 @@ func AsSortedMap(m interface{}) (s SortedMap) {
 		panic("input object should be a map")
 	}
 
+	s = make(SortedMap, 0, val.Len())
 	for _, k := range val.MapKeys() {
 		v := val.MapIndex(k).Interface()
 		s = append(s, KeyValuePair{k.String(), v})
