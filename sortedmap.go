@@ -61,6 +61,17 @@ func (s SortedMap) Keys() (keys []string) {
 }
 
 //
+// Values returns the list of keys for the entries in this SortdMap
+//
+func (s SortedMap) Values() (values []interface{}) {
+	for _, kv := range s {
+		values = append(values, kv.Value)
+	}
+
+	return
+}
+
+//
 // MarshalJSON implements the json.Marshaler interface
 //
 func (s SortedMap) MarshalJSON() ([]byte, error) {
