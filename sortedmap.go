@@ -61,7 +61,7 @@ func (s SortedMap) Keys() (keys []string) {
 }
 
 //
-// Values returns the list of keys for the entries in this SortdMap
+// Values returns the list of values for the entries in this SortdMap
 //
 func (s SortedMap) Values() (values []interface{}) {
 	for _, kv := range s {
