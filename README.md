@@ -21,7 +21,7 @@ The most common use cases is to print the content of a map sorted by key:
 	for _, ele := range sortedmap.AsSortedMap(unsorted) {
 		fmt.Println(ele)    // implements Stringer
 		
-		fmt.Println(ele.Key() + ":" + ele.Value())
+		fmt.Println(ele.Key + ":" + ele.Value)
 	}
 
 You can also generate a JSON object with sorted keys:
