@@ -1,3 +1,5 @@
+//go:build !go1.18
+
 package sortedmap
 
 import (
@@ -161,6 +163,28 @@ func (s SortedByValue) Sort(asc bool) {
 }
 
 //
+// Keys returns the list of keys for the entries in this SortdByValue
+//
+func (s SortedByValue) Keys() (keys []string) {
+	for _, kv := range s {
+		keys = append(keys, kv.Key)
+	}
+
+	return
+}
+
+//
+// Values returns the list of values for the entries in this SortdMap
+//
+func (s SortedByValue) Values() (values []interface{}) {
+	for _, kv := range s {
+		values = append(values, kv.Value)
+	}
+
+	return
+}
+
+//
 // AsSortedByValue return a SortedByValue from a map[string]int
 // Note that this will panic if the input object is not a map string/int
 //
@@ -170,10 +194,11 @@ func AsSortedByValue(m interface{}, asc bool) (s SortedByValue) {
 		panic("input object should be a map")
 	}
 
-	for _, k := range val.MapKeys() {
-		v := val.MapIndex(k).Int()
-		s = append(s, KeyIntValue{k.String(), v})
-	}
+        for iter := reflect.ValueOf(m).MapRange(); iter.Next(); {
+	    k := iter.Key()
+	    v := iter.Value().Int()
+            s = append(s, KeyIntValue{k.String(), v})
+        }
 
 	s.Sort(asc)
 	return
