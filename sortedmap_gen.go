@@ -4,10 +4,11 @@ package sortedmap
 
 import (
 	"bytes"
-	"constraints"
 	"encoding/json"
 	"fmt"
 	"sort"
+
+	"golang.org/x/exp/constraints"
 )
 
 //
