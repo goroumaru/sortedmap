@@ -194,11 +194,11 @@ func AsSortedByValue(m interface{}, asc bool) (s SortedByValue) {
 		panic("input object should be a map")
 	}
 
-        for iter := reflect.ValueOf(m).MapRange(); iter.Next(); {
-	    k := iter.Key()
-	    v := iter.Value().Int()
-            s = append(s, KeyIntValue{k.String(), v})
-        }
+	for iter := reflect.ValueOf(m).MapRange(); iter.Next(); {
+		k := iter.Key()
+		v := iter.Value().Int()
+		s = append(s, KeyIntValue{k.String(), v})
+	}
 
 	s.Sort(asc)
 	return

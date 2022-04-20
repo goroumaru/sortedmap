@@ -82,5 +82,5 @@ func ExampleAsSortedMap() {
 
 	fmt.Println(AsSortedMap(unsorted))
 	// Output:
-        // ["a": 1 "b": 2 "c": true "d": four "e": <nil>]
+	// ["a": 1 "b": 2 "c": true "d": four "e": <nil>]
 }
